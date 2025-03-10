@@ -1,10 +1,12 @@
+import { Theme } from "@mui/material/styles";
+
 export const iconButton = {
   MuiIconButton: {
     defaultProps: {
       disableRipple: true,
     },
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: ({ theme }: { theme: Theme }) => ({
         boxShadow: "none",
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
@@ -19,47 +21,6 @@ export const iconButton = {
           backgroundColor: theme.palette.primary.disabled,
           color: theme.palette.primary.disabledColor,
         },
-
-        variants: [
-          {
-            props: { variant: "tertiary" },
-            style: {
-              backgroundColor: "transparent",
-              color: theme.palette.neutral[700],
-              border: `1px solid ${theme.palette.neutral[300]}`,
-              "&:hover": {
-                borderColor: theme.palette.neutral[100],
-                backgroundColor: theme.palette.neutral[100],
-              },
-              "&:focus": {
-                background: theme.palette.neutral[100],
-              },
-              "&.Mui-disabled": {
-                backgroundColor: "transparent",
-                color: theme.palette.neutral[300],
-                borderColor: theme.palette.neutral[300],
-              },
-            },
-          },
-          {
-            props: { variant: "soft" },
-            style: {
-              backgroundColor: "transparent",
-              color: theme.palette.neutral[700],
-              "&:hover": {
-                color: theme.palette.neutral[700],
-                backgroundColor: theme.palette.neutral[100],
-              },
-              "&:focus": {
-                backgroundColor: theme.palette.neutral[100],
-              },
-              "&.Mui-disabled": {
-                backgroundColor: "transparent",
-                color: theme.palette.neutral[300],
-              },
-            },
-          },
-        ],
         '&[type="rounded"]': {
           borderRadius: "50%",
         },
@@ -76,7 +37,7 @@ export const iconButton = {
         borderRadius: "6px",
         padding: "8px",
       },
-      colorPrimary: ({ theme }) => ({
+      colorPrimary: ({ theme }: { theme: Theme }) => ({
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
         "&:hover": {
@@ -91,7 +52,7 @@ export const iconButton = {
           color: theme.palette.primary.disabledColor,
         },
       }),
-      colorSecondary: ({ theme }) => ({
+      colorSecondary: ({ theme }: { theme: Theme }) => ({
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText,
         "&:hover": {
@@ -107,5 +68,45 @@ export const iconButton = {
         },
       }),
     },
+    variants: [
+      {
+        props: { variant: "tertiary" },
+        style: ({ theme }: { theme: Theme }) => ({
+          backgroundColor: "transparent",
+          color: theme.palette.neutral[700],
+          border: `1px solid ${theme.palette.neutral[300]}`,
+          "&:hover": {
+            borderColor: theme.palette.neutral[100],
+            backgroundColor: theme.palette.neutral[100],
+          },
+          "&:focus": {
+            background: theme.palette.neutral[100],
+          },
+          "&.Mui-disabled": {
+            backgroundColor: "transparent",
+            color: theme.palette.neutral[300],
+            borderColor: theme.palette.neutral[300],
+          },
+        }),
+      },
+      {
+        props: { variant: "soft" },
+        style: ({ theme }: { theme: Theme }) => ({
+          backgroundColor: "transparent",
+          color: theme.palette.neutral[700],
+          "&:hover": {
+            color: theme.palette.neutral[700],
+            backgroundColor: theme.palette.neutral[100],
+          },
+          "&:focus": {
+            backgroundColor: theme.palette.neutral[100],
+          },
+          "&.Mui-disabled": {
+            backgroundColor: "transparent",
+            color: theme.palette.neutral[300],
+          },
+        }),
+      },
+    ],
   },
 };

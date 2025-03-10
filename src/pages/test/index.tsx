@@ -4,6 +4,8 @@ import {
   Container,
   Divider,
   IconButton,
+  InputLabel,
+  TextField,
   Typography,
 } from "@mui/material";
 
@@ -12,6 +14,7 @@ import { PencilSimple } from "@phosphor-icons/react";
 const ComponentsTest = () => {
   return (
     <Container>
+      {/* Buttons */}
       <Box sx={{ my: 2 }}>
         <Typography variant="h5">Buttons</Typography>
         <Button
@@ -181,6 +184,19 @@ const ComponentsTest = () => {
           </IconButton>
         </Box>
       </Box>
+
+      {/* Buttons */}
+
+      <Divider />
+
+      {/* Inputs */}
+      <Box sx={{ my: 2 }}>
+        <Box>
+          <InputLabel>Label</InputLabel>
+          <TextField />
+        </Box>
+      </Box>
+      {/* Inputs */}
     </Container>
   );
 };
