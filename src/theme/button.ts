@@ -1,72 +1,17 @@
+import { Theme } from "@mui/material/styles";
+
 export const button = {
   MuiButton: {
     defaultProps: {
       disableRipple: true,
     },
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: () => ({
         boxShadow: "none",
         textTransform: "capitalize",
         "&:focus": {
           outline: 0,
         },
-        variants: [
-          {
-            props: { variant: "tertiary" },
-            style: {
-              minWidth: 64,
-              fontSize: 14,
-              fontWeight: 500,
-              lineHeight: 1.75,
-              borderRadius: "6px",
-              padding: "4px 10px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: theme.palette.neutral[700],
-              border: `1px solid ${theme.palette.neutral[300]}`,
-              "&:hover": {
-                borderColor: theme.palette.neutral[50],
-                background: theme.palette.neutral[50],
-              },
-              "&:focus": {
-                background: theme.palette.neutral[50],
-              },
-              "&.Mui-disabled": {
-                color: theme.palette.neutral[300],
-                borderColor: theme.palette.neutral[300],
-              },
-            },
-          },
-          {
-            props: { variant: "soft" },
-            style: {
-              minWidth: 64,
-              fontSize: 14,
-              fontWeight: 500,
-              lineHeight: 1.75,
-              borderRadius: "6px",
-              padding: "4px 10px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderColor: theme.palette.neutral[50],
-              background: theme.palette.neutral[50],
-              "&:hover": {
-                color: theme.palette.neutral[700],
-                border: `1px solid ${theme.palette.neutral[300]}`,
-              },
-              "&:focus": {
-                borderColor: theme.palette.neutral[50],
-                background: theme.palette.neutral[50],
-              },
-              "&.Mui-disabled": {
-                color: theme.palette.neutral[300],
-                borderColor: "none",
-              },
-            },
-          },
-        ],
       }),
       sizeMedium: {
         borderRadius: "6px",
@@ -78,7 +23,7 @@ export const button = {
       sizeSmall: {
         borderRadius: "6px",
       },
-      containedPrimary: ({ theme }) => ({
+      containedPrimary: ({ theme }: { theme: Theme }) => ({
         "&:focus": {
           background: theme.palette.primary.focus,
         },
@@ -87,7 +32,7 @@ export const button = {
           color: theme.palette.primary.disabledColor,
         },
       }),
-      containedSecondary: ({ theme }) => ({
+      containedSecondary: ({ theme }: { theme: Theme }) => ({
         "&:focus": {
           background: theme.palette.secondary.focus,
         },
@@ -97,5 +42,62 @@ export const button = {
         },
       }),
     },
+    variants: [
+      {
+        props: { variant: "tertiary" },
+        style: ({ theme }: { theme: Theme }) => ({
+          minWidth: 64,
+          fontSize: 14,
+          fontWeight: 500,
+          lineHeight: 1.75,
+          borderRadius: "6px",
+          padding: "4px 10px",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: theme.palette.neutral[700],
+          border: `1px solid ${theme.palette.neutral[300]}`,
+          "&:hover": {
+            borderColor: theme.palette.neutral[50],
+            background: theme.palette.neutral[50],
+          },
+          "&:focus": {
+            background: theme.palette.neutral[50],
+          },
+          "&.Mui-disabled": {
+            color: theme.palette.neutral[300],
+            borderColor: theme.palette.neutral[300],
+          },
+        }),
+      },
+      {
+        props: { variant: "soft" },
+        style: ({ theme }: { theme: Theme }) => ({
+          minWidth: 64,
+          fontSize: 14,
+          fontWeight: 500,
+          lineHeight: 1.75,
+          borderRadius: "6px",
+          padding: "4px 10px",
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderColor: theme.palette.neutral[50],
+          background: theme.palette.neutral[50],
+          "&:hover": {
+            color: theme.palette.neutral[700],
+            border: `1px solid ${theme.palette.neutral[300]}`,
+          },
+          "&:focus": {
+            borderColor: theme.palette.neutral[50],
+            background: theme.palette.neutral[50],
+          },
+          "&.Mui-disabled": {
+            color: theme.palette.neutral[300],
+            borderColor: "none",
+          },
+        }),
+      },
+    ],
   },
 };
