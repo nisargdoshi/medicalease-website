@@ -6,7 +6,7 @@ import { shadows } from "./shadows";
 import { typography } from "./typography";
 
 // components
-import { label } from "./label";
+import { label, input } from "./input";
 import { button } from "./button";
 import { iconButton } from "./iconButton";
 
@@ -31,5 +31,6 @@ export const theme = createTheme(baseTheme, {
     ...(button as Components<Theme>),
     ...(iconButton as Components<Theme>),
     ...(label as Components<Theme>),
+    ...(input as Components<Theme>),
   },
 });

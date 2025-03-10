@@ -1,17 +1,46 @@
+import { useState } from "react";
+
 import {
   Box,
   Button,
   Container,
   Divider,
   IconButton,
+  InputAdornment,
   InputLabel,
   TextField,
   Typography,
+  Select,
+  SelectChangeEvent,
+  MenuItem,
+  Chip,
 } from "@mui/material";
 
-import { PencilSimple } from "@phosphor-icons/react";
+import { X, UserCircle, Eye, PencilSimple } from "@phosphor-icons/react";
+
+const names = [
+  "Oliver",
+  "Van",
+  "April",
+  "Ralph",
+  "Omar",
+  "Carlos",
+  "Miriam",
+  "Bradley",
+  "Virginia",
+  "Kelly",
+];
 
 const ComponentsTest = () => {
+  const [selectedNames, setSelectedNames] = useState<string[]>([]);
+  const handleChange = (event: SelectChangeEvent) => {
+    const {
+      target: { value },
+    } = event;
+    const values = typeof value === "string" ? value.split(",") : value;
+    setSelectedNames(values);
+  };
+
   return (
     <Container>
       {/* Buttons */}
@@ -192,8 +221,183 @@ const ComponentsTest = () => {
       {/* Inputs */}
       <Box sx={{ my: 2 }}>
         <Box>
-          <InputLabel>Label</InputLabel>
-          <TextField />
+          <InputLabel>Small</InputLabel>
+          <TextField
+            placeholder="Placeholder"
+            size="small"
+            helperText="Helper Text"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <UserCircle size={16} />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Eye size={16} />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Default</InputLabel>
+          <TextField placeholder="Placeholder" />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Large</InputLabel>
+          <TextField placeholder="Placeholder" size="large" />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Disabled</InputLabel>
+          <TextField
+            disabled
+            placeholder="Placeholder"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <UserCircle size={16} />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Eye size={16} />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Error</InputLabel>
+          <TextField
+            error
+            placeholder="Placeholder"
+            helperText="Helper Text"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <UserCircle size={16} />
+                  </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Eye size={16} />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Tags LG</InputLabel>
+          <Select
+            multiple
+            fullWidth
+            size="large"
+            value={selectedNames}
+            onChange={handleChange}
+            IconComponent={null}
+            renderValue={(selected) => (
+              <Box
+                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
+              >
+                {selected.map((value) => (
+                  <Chip
+                    key={value}
+                    label={value}
+                    deleteIcon={<X size={12} />}
+                    onDelete={() => console.log(value)}
+                  />
+                ))}
+              </Box>
+            )}
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Tags Default</InputLabel>
+          <Select
+            multiple
+            fullWidth
+            value={selectedNames}
+            onChange={handleChange}
+            IconComponent={null}
+            renderValue={(selected) => (
+              <Box
+                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
+              >
+                {selected.map((value) => (
+                  <Chip
+                    key={value}
+                    label={value}
+                    deleteIcon={<X size={12} />}
+                    onDelete={() => console.log(value)}
+                  />
+                ))}
+              </Box>
+            )}
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>Tags Small</InputLabel>
+          <Select
+            multiple
+            fullWidth
+            size="small"
+            value={selectedNames}
+            onChange={handleChange}
+            IconComponent={null}
+            renderValue={(selected) => (
+              <Box
+                sx={{ mt: -0.35, display: "flex", flexWrap: "wrap", gap: 1 }}
+              >
+                {selected.map((value) => (
+                  <Chip
+                    key={value}
+                    label={value}
+                    deleteIcon={<X size={12} />}
+                    onDelete={() => console.log(value)}
+                  />
+                ))}
+              </Box>
+            )}
+          >
+            {names.map((name) => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>TextArea Label</InputLabel>
+          <TextField fullWidth multiline rows={2} placeholder="Placeholder" />
+        </Box>
+        <Box sx={{ my: 1.5 }}>
+          <InputLabel>TextArea Disabled</InputLabel>
+          <TextField
+            fullWidth
+            multiline
+            disabled
+            rows={2}
+            placeholder="Placeholder"
+          />
         </Box>
       </Box>
       {/* Inputs */}
