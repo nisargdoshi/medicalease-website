@@ -5,7 +5,6 @@ import {
   Button,
   FormControlLabel,
   Grid2,
-  IconButton,
   InputAdornment,
   InputLabel,
   Switch,
@@ -199,7 +198,7 @@ export const Login = () => {
                 zIndex: 1,
 
                 width: "100%",
-                height: "calc(100vh + 100px)",
+                height: "calc(100vh + 21px)",
                 position: "absolute",
               }}
             />
@@ -216,4 +215,3 @@ export const Login = () => {
     </Box>
   );
 };
-

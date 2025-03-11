@@ -1,5 +1,8 @@
-import { Components, createTheme } from "@mui/material";
-import { Theme, Shadows as ShadowsType } from "@mui/material/styles";
+// @ts-expect-error
+import "@types/mui.d.ts";
+
+import { createTheme } from "@mui/material";
+import { Shadows as ShadowsType } from "@mui/material/styles";
 
 import { palette } from "./palette";
 import { shadows } from "./shadows";
@@ -10,11 +13,9 @@ import { label, input } from "./input";
 import { button } from "./button";
 import { iconButton } from "./iconButton";
 
-// @ts-ignore
-import "@types/mui.d.ts";
-
 const baseTheme = createTheme({
   palette: {
+    mode: "light",
     ...palette,
   },
   shadows: shadows as ShadowsType,
@@ -28,10 +29,10 @@ const baseTheme = createTheme({
 // Then add components using the typed approach
 export const theme = createTheme(baseTheme, {
   components: {
-    ...(button as Components<Theme>),
-    ...(iconButton as Components<Theme>),
-    ...(label as Components<Theme>),
-    ...(input as Components<Theme>),
-    ...(typographyOverride as Components<Theme>),
+    ...button,
+    ...iconButton,
+    ...label,
+    ...input,
+    ...typographyOverride,
   },
 });

@@ -33,7 +33,8 @@ const names = [
 
 export const Home = () => {
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
-  const handleChange = (event: SelectChangeEvent) => {
+
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
     const {
       target: { value },
     } = event;
@@ -301,11 +302,9 @@ export const Home = () => {
             size="large"
             value={selectedNames}
             onChange={handleChange}
-            IconComponent={null}
+            IconComponent="span"
             renderValue={(selected) => (
-              <Box
-                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
-              >
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {selected.map((value) => (
                   <Chip
                     key={value}
@@ -331,11 +330,9 @@ export const Home = () => {
             fullWidth
             value={selectedNames}
             onChange={handleChange}
-            IconComponent={null}
+            IconComponent="span"
             renderValue={(selected) => (
-              <Box
-                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
-              >
+              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {selected.map((value) => (
                   <Chip
                     key={value}
@@ -362,7 +359,7 @@ export const Home = () => {
             size="small"
             value={selectedNames}
             onChange={handleChange}
-            IconComponent={null}
+            IconComponent="span"
             renderValue={(selected) => (
               <Box
                 sx={{ mt: -0.35, display: "flex", flexWrap: "wrap", gap: 1 }}
@@ -404,4 +401,3 @@ export const Home = () => {
     </Container>
   );
 };
-

@@ -1,4 +1,4 @@
-import { Theme } from "@emotion/react";
+import { Theme } from "@mui/material/styles";
 
 export const label = {
   MuiInputLabel: {
