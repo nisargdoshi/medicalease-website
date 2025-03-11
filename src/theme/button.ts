@@ -7,7 +7,7 @@ export const button = {
     },
     styleOverrides: {
       root: () => ({
-        boxShadow: "none",
+        boxShadow: "none !important",
         textTransform: "capitalize",
         "&:focus": {
           outline: 0,

@@ -7,6 +7,7 @@ export const label = {
         fontSize: 14,
         fontWeight: 500,
         lineHeight: "20px",
+        marginBottom: "4px",
         color: theme.palette.neutral[700],
       }),
     },
@@ -28,6 +29,9 @@ export const input = {
           "&::placeholder": {
             color: theme.palette.neutral[400],
           },
+          "& fieldset": {
+            borderColor: theme.palette.neutral[300],
+          },
         },
         "& textarea.MuiInputBase-input": {
           paddingLeft: 12,
@@ -38,6 +42,11 @@ export const input = {
         },
 
         // States
+        "&:hover": {
+          "& fieldset": {
+            borderColor: `${theme.palette.neutral[300]} !important`,
+          },
+        },
         "&.Mui-focused": {
           "& fieldset": {
             borderColor: `${theme.palette.info.dark} !important`,

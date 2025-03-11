@@ -10,7 +10,7 @@ const App = () => {
       <CssBaseline />
       <GlobalStyles
         styles={{
-          body: { backgroundColor: "background.default" },
+          body: { backgroundColor: theme.palette.background.default },
         }}
       />
       <ComponentsTest />

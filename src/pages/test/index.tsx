@@ -3,406 +3,218 @@ import { useState } from "react";
 import {
   Box,
   Button,
-  Container,
-  Divider,
+  FormControlLabel,
+  Grid2,
   IconButton,
   InputAdornment,
   InputLabel,
+  Switch,
   TextField,
   Typography,
-  Select,
-  SelectChangeEvent,
-  MenuItem,
-  Chip,
 } from "@mui/material";
 
-import { X, UserCircle, Eye, PencilSimple } from "@phosphor-icons/react";
+import { EnvelopeSimple, Lock, Eye, EyeSlash } from "@phosphor-icons/react";
 
-const names = [
-  "Oliver",
-  "Van",
-  "April",
-  "Ralph",
-  "Omar",
-  "Carlos",
-  "Miriam",
-  "Bradley",
-  "Virginia",
-  "Kelly",
-];
+import logo from "@assets/logo.svg";
+import dashboard from "@assets/dashboard.png";
+import authRings from "@assets/auth-rings.png";
 
-const ComponentsTest = () => {
-  const [selectedNames, setSelectedNames] = useState<string[]>([]);
-  const handleChange = (event: SelectChangeEvent) => {
-    const {
-      target: { value },
-    } = event;
-    const values = typeof value === "string" ? value.split(",") : value;
-    setSelectedNames(values);
-  };
+const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <Container>
-      {/* Buttons */}
-      <Box sx={{ my: 2 }}>
-        <Typography variant="h5">Buttons</Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          sx={{
-            mx: 2,
-          }}
-        >
-          Primary
-        </Button>
-        <Button
-          disabled
-          variant="contained"
-          color="primary"
-          sx={{
-            mx: 2,
-          }}
-        >
-          Primary
-        </Button>
-        <Button
-          disabled
-          variant="contained"
-          color="secondary"
-          size="large"
-          sx={{
-            mx: 2,
-          }}
-        >
-          Secondary
-        </Button>
-        <Box sx={{ my: 2 }}>
-          <Button
-            size="small"
-            variant="tertiary"
+    <Box
+      sx={{
+        width: "100%",
+        height: "100vh",
+        background: "linear-gradient(90deg, #F9F7F7 9.79%, #BDACAC 100%);",
+      }}
+    >
+      <Grid2 container spacing={10}>
+        <Grid2 size={{ lg: 5, xs: 12 }}>
+          <Box
             sx={{
-              mx: 2,
+              gap: 8,
+              display: "flex",
+              flexDirection: "column",
+              pl: { xs: 0, lg: "150px" },
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            Tertiary Small
-          </Button>
-          <Button
-            variant="tertiary"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Tertiary
-          </Button>
-          <Button
-            size="large"
-            variant="tertiary"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Tertiary Large
-          </Button>
-          <Button
-            disabled
-            variant="tertiary"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Tertiary Disabled
-          </Button>
-        </Box>
-        <Box sx={{ my: 2 }}>
-          <Button
-            size="small"
-            variant="soft"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Soft Small
-          </Button>
-          <Button
-            variant="soft"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Soft
-          </Button>
-          <Button
-            size="large"
-            variant="soft"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Soft Large
-          </Button>
-          <Button
-            disabled
-            variant="soft"
-            sx={{
-              mx: 2,
-            }}
-          >
-            Soft Disabled
-          </Button>
-        </Box>
-      </Box>
-      <Divider />
-
-      <Box sx={{ my: 2 }}>
-        <Typography mb={2} variant="h5">
-          Icon Buttons
-        </Typography>
-        <IconButton size="small">
-          <PencilSimple />
-        </IconButton>
-        <IconButton sx={{ mx: 2 }}>
-          <PencilSimple />
-        </IconButton>
-        <IconButton size="large" type="rounded" disabled>
-          <PencilSimple />
-        </IconButton>
-        <Box sx={{ my: 2 }}>
-          <IconButton size="small" color="secondary">
-            <PencilSimple />
-          </IconButton>
-          <IconButton sx={{ mx: 2 }} color="secondary">
-            <PencilSimple />
-          </IconButton>
-          <IconButton size="large" type="rounded" disabled color="secondary">
-            <PencilSimple />
-          </IconButton>
-        </Box>
-        <Box sx={{ my: 2 }}>
-          <IconButton size="small" variant="tertiary">
-            <PencilSimple />
-          </IconButton>
-          <IconButton variant="tertiary" sx={{ ml: 2 }}>
-            <PencilSimple />
-          </IconButton>
-          <IconButton
-            disabled
-            size="large"
-            type="rounded"
-            variant="tertiary"
-            sx={{ ml: 2 }}
-          >
-            <PencilSimple />
-          </IconButton>
-        </Box>
-        <Box sx={{ my: 2 }}>
-          <IconButton size="small" variant="soft">
-            <PencilSimple />
-          </IconButton>
-          <IconButton variant="soft" sx={{ ml: 2 }}>
-            <PencilSimple />
-          </IconButton>
-          <IconButton
-            disabled
-            size="large"
-            type="rounded"
-            variant="soft"
-            sx={{ ml: 2 }}
-          >
-            <PencilSimple />
-          </IconButton>
-        </Box>
-      </Box>
-
-      {/* Buttons */}
-
-      <Divider />
-
-      {/* Inputs */}
-      <Box sx={{ my: 2 }}>
-        <Box>
-          <InputLabel>Small</InputLabel>
-          <TextField
-            placeholder="Placeholder"
-            size="small"
-            helperText="Helper Text"
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <UserCircle size={16} />
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Eye size={16} />
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Default</InputLabel>
-          <TextField placeholder="Placeholder" />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Large</InputLabel>
-          <TextField placeholder="Placeholder" size="large" />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Disabled</InputLabel>
-          <TextField
-            disabled
-            placeholder="Placeholder"
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <UserCircle size={16} />
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Eye size={16} />
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Error</InputLabel>
-          <TextField
-            error
-            placeholder="Placeholder"
-            helperText="Helper Text"
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <UserCircle size={16} />
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <Eye size={16} />
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Tags LG</InputLabel>
-          <Select
-            multiple
-            fullWidth
-            size="large"
-            value={selectedNames}
-            onChange={handleChange}
-            IconComponent={null}
-            renderValue={(selected) => (
-              <Box
-                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
-              >
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                    deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
-                  />
-                ))}
+            <Box
+              sx={{
+                pt: 4,
+                maxWidth: { xs: "100%", lg: 400 },
+                textAlign: "center",
+              }}
+            >
+              <img src={logo} alt="logo" />
+            </Box>
+            <Box
+              sx={{
+                maxWidth: { xs: "100%", lg: 400 },
+                textAlign: "center",
+              }}
+            >
+              <Typography variant="h2">Welcome Back!</Typography>
+              <Typography sx={{ mt: 1.25, color: "text.secondary" }}>
+                Your email & password to access your account.
+              </Typography>
+            </Box>
+            <Box sx={{ maxWidth: { xs: "100%", lg: 400 } }}>
+              <Box>
+                <InputLabel htmlFor="email">Email</InputLabel>
+                <TextField
+                  fullWidth
+                  id="email"
+                  size="large"
+                  type="email"
+                  placeholder="Enter your email"
+                  sx={{
+                    "& .MuiInputBase-root": {
+                      bgcolor: "common.white",
+                    },
+                  }}
+                  slotProps={{
+                    input: {
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EnvelopeSimple size={24} />
+                        </InputAdornment>
+                      ),
+                    },
+                  }}
+                />
               </Box>
-            )}
-          >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Tags Default</InputLabel>
-          <Select
-            multiple
-            fullWidth
-            value={selectedNames}
-            onChange={handleChange}
-            IconComponent={null}
-            renderValue={(selected) => (
-              <Box
-                sx={{ mt: -0.25, display: "flex", flexWrap: "wrap", gap: 1 }}
-              >
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                    deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
-                  />
-                ))}
+              <Box sx={{ mt: 3 }}>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <TextField
+                  fullWidth
+                  id="password"
+                  size="large"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your email"
+                  sx={{
+                    "& .MuiInputBase-root": {
+                      bgcolor: "common.white",
+                    },
+                  }}
+                  slotProps={{
+                    input: {
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Lock size={24} />
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <InputAdornment
+                          position="end"
+                          sx={{
+                            cursor: "pointer",
+                          }}
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? (
+                            <Eye size={24} />
+                          ) : (
+                            <EyeSlash size={24} />
+                          )}
+                        </InputAdornment>
+                      ),
+                    },
+                  }}
+                />
               </Box>
-            )}
-          >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>Tags Small</InputLabel>
-          <Select
-            multiple
-            fullWidth
-            size="small"
-            value={selectedNames}
-            onChange={handleChange}
-            IconComponent={null}
-            renderValue={(selected) => (
               <Box
-                sx={{ mt: -0.35, display: "flex", flexWrap: "wrap", gap: 1 }}
+                sx={{
+                  mt: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
               >
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                    deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
-                  />
-                ))}
+                <FormControlLabel control={<Switch />} label="Remember Me" />
+
+                <Typography variant="link">Forgot Password?</Typography>
               </Box>
-            )}
+              <Box sx={{ mt: 5 }}>
+                <Button fullWidth variant="contained" color="primary">
+                  Log in
+                </Button>
+              </Box>
+              <Box sx={{ mt: 5, textAlign: "center" }}>
+                <Typography
+                  sx={{
+                    color: (theme) => theme.palette.neutral[600],
+                  }}
+                >
+                  Don't have an account?{" "}
+                  <Typography
+                    component="span"
+                    variant="link"
+                    sx={{
+                      color: "info.dark",
+                    }}
+                  >
+                    Sign Up
+                  </Typography>
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                maxWidth: { xs: "100%", lg: 400 },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography variant="body2">Version 1.0</Typography>
+              <Box>
+                <Typography component="span" variant="body2">
+                  Terms of Use |{" "}
+                </Typography>
+                <Typography component="span" variant="body2">
+                  Privacy Policy
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Grid2>
+        <Grid2 size={{ lg: 7, xs: 0 }}>
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              position: "relative",
+              overflow: "visible",
+            }}
           >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>TextArea Label</InputLabel>
-          <TextField fullWidth multiline rows={2} placeholder="Placeholder" />
-        </Box>
-        <Box sx={{ my: 1.5 }}>
-          <InputLabel>TextArea Disabled</InputLabel>
-          <TextField
-            fullWidth
-            multiline
-            disabled
-            rows={2}
-            placeholder="Placeholder"
-          />
-        </Box>
-      </Box>
-      {/* Inputs */}
-    </Container>
+            <Box
+              component="img"
+              src={authRings}
+              sx={{
+                zIndex: 1,
+
+                width: "100%",
+                height: "calc(100vh + 100px)",
+                position: "absolute",
+              }}
+            />
+            <Box
+              component="img"
+              src={dashboard}
+              sx={{
+                zIndex: 2,
+              }}
+            />
+          </Box>
+        </Grid2>
+      </Grid2>
+    </Box>
   );
 };
 
-export default ComponentsTest;
+export default LoginPage;

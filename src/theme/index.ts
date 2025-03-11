@@ -3,7 +3,7 @@ import { Theme, Shadows as ShadowsType } from "@mui/material/styles";
 
 import { palette } from "./palette";
 import { shadows } from "./shadows";
-import { typography } from "./typography";
+import { typography, typographyOverride } from "./typography";
 
 // components
 import { label, input } from "./input";
@@ -32,5 +32,6 @@ export const theme = createTheme(baseTheme, {
     ...(iconButton as Components<Theme>),
     ...(label as Components<Theme>),
     ...(input as Components<Theme>),
+    ...(typographyOverride as Components<Theme>),
   },
 });

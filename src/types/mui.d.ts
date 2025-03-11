@@ -107,3 +107,9 @@ declare module "@mui/material/IconButton" {
     soft: true;
   }
 }
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    link: true;
+  }
+}
