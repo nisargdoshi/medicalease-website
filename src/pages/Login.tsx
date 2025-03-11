@@ -19,7 +19,7 @@ import logo from "@assets/logo.svg";
 import dashboard from "@assets/dashboard.png";
 import authRings from "@assets/auth-rings.png";
 
-const LoginPage = () => {
+export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -217,4 +217,3 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;

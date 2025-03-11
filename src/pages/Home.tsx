@@ -31,7 +31,7 @@ const names = [
   "Kelly",
 ];
 
-const ComponentsTest = () => {
+export const Home = () => {
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const handleChange = (event: SelectChangeEvent) => {
     const {
@@ -405,4 +405,3 @@ const ComponentsTest = () => {
   );
 };
 
-export default ComponentsTest;
