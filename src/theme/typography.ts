@@ -1,3 +1,5 @@
+import { Theme } from "@mui/material/styles";
+
 export const typography = {
   htmlFontSize: 16,
   fontFamily: "Inter, sans-serif",
@@ -36,5 +38,23 @@ export const typography = {
   caption: {
     fontSize: 12,
     fontWeight: 400,
+  },
+};
+
+export const typographyOverride = {
+  MuiTypography: {
+    variants: [
+      {
+        props: { variant: "link" },
+        style: ({ theme }: { theme: Theme }) => ({
+          fontSize: 14,
+          fontWeight: 600,
+          cursor: "pointer",
+          lineHeight: "20px",
+          textDecoration: "underline",
+          color: theme.palette.text.primary,
+        }),
+      },
+    ],
   },
 };

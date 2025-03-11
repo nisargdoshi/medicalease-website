@@ -95,9 +95,21 @@ declare module "@mui/material/Button" {
   }
 }
 
+declare module "@mui/material/TextField" {
+  interface TextFieldPropsVariantOverrides {
+    size: "small" | "large";
+  }
+}
+
 declare module "@mui/material/IconButton" {
   interface IconButtonPropsVariantOverrides {
     tertiary: true;
     soft: true;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    link: true;
   }
 }
