@@ -5,7 +5,6 @@ import {
   Button,
   FormControlLabel,
   Grid2,
-  IconButton,
   InputAdornment,
   InputLabel,
   Switch,

@@ -1,5 +1,4 @@
 export const palette = {
-  mode: "light",
   common: {
     black: "#000000",
     white: "#FFFFFF",

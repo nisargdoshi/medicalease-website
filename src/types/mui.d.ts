@@ -1,5 +1,4 @@
-import { ButtonProps, IconButtonProps } from "@mui/material";
-import React from "react";
+import { CSSObject } from "@emotion/react";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -76,13 +75,13 @@ declare module "@mui/material/styles" {
     MuiButton: {
       variants: Array<{
         props: { variant: "tertiary" | "soft" };
-        style: any;
+        style: CSSObject;
       }>;
     };
     MuiIconButton: {
       variants: Array<{
         props: { variant: "tertiary" | "soft" };
-        style: any;
+        style: CSSObject;
       }>;
     };
   }
@@ -96,15 +95,27 @@ declare module "@mui/material/Button" {
 }
 
 declare module "@mui/material/TextField" {
-  interface TextFieldPropsVariantOverrides {
-    size: "small" | "large";
+  interface TextFieldPropsSizeOverrides {
+    large: true;
+  }
+}
+
+declare module "@mui/material/InputBase" {
+  interface InputBasePropsSizeOverrides {
+    large: true;
+  }
+}
+
+declare module "@mui/material/Select" {
+  interface SelectPropsSizeOverrides {
+    large: true;
   }
 }
 
 declare module "@mui/material/IconButton" {
-  interface IconButtonPropsVariantOverrides {
-    tertiary: true;
-    soft: true;
+  interface IconButtonOwnProps {
+    variant?: "tertiary" | "soft";
+    type?: "rounded" | string;
   }
 }
 
