@@ -6,10 +6,9 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
 import { PencilSimple } from "@phosphor-icons/react";
 
-const ComponentsTest = () => {
+export const Home = () => {
   return (
     <Container>
       <Box sx={{ my: 2 }}>
@@ -184,5 +183,3 @@ const ComponentsTest = () => {
     </Container>
   );
 };
-
-export default ComponentsTest;
