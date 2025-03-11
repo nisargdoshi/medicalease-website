@@ -33,7 +33,7 @@ const App = ({ router }: AppProps): FunctionComponent => {
         <CssBaseline />
         <GlobalStyles
           styles={{
-            body: { backgroundColor: "background.default" },
+            body: { backgroundColor: theme.palette.background.default },
           }}
         />
         {/* code for auth provider */}

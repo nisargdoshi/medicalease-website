@@ -7,7 +7,7 @@ export const button = {
     },
     styleOverrides: {
       root: () => ({
-        boxShadow: "none",
+        boxShadow: "none !important",
         textTransform: "capitalize",
         "&:focus": {
           outline: 0,
@@ -55,7 +55,7 @@ export const button = {
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          color: theme.palette.neutral[700],
+          color: theme.palette.text.primary,
           border: `1px solid ${theme.palette.neutral[300]}`,
           "&:hover": {
             borderColor: theme.palette.neutral[50],
@@ -85,7 +85,7 @@ export const button = {
           borderColor: theme.palette.neutral[50],
           background: theme.palette.neutral[50],
           "&:hover": {
-            color: theme.palette.neutral[700],
+            color: theme.palette.text.primary,
             border: `1px solid ${theme.palette.neutral[300]}`,
           },
           "&:focus": {

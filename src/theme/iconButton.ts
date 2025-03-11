@@ -73,7 +73,7 @@ export const iconButton = {
         props: { variant: "tertiary" },
         style: ({ theme }: { theme: Theme }) => ({
           backgroundColor: "transparent",
-          color: theme.palette.neutral[700],
+          color: theme.palette.text.primary,
           border: `1px solid ${theme.palette.neutral[300]}`,
           "&:hover": {
             borderColor: theme.palette.neutral[100],
@@ -93,9 +93,9 @@ export const iconButton = {
         props: { variant: "soft" },
         style: ({ theme }: { theme: Theme }) => ({
           backgroundColor: "transparent",
-          color: theme.palette.neutral[700],
+          color: theme.palette.text.primary,
           "&:hover": {
-            color: theme.palette.neutral[700],
+            color: theme.palette.text.primary,
             backgroundColor: theme.palette.neutral[100],
           },
           "&:focus": {
