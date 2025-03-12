@@ -1,8 +1,8 @@
-// @ts-expect-error
+// @ts-expect-error Importing type declarations for MUI
 import "@types/mui.d.ts";
 
 import { createTheme } from "@mui/material";
-import { Shadows as ShadowsType } from "@mui/material/styles";
+import type { Shadows as ShadowsType } from "@mui/material/styles";
 
 import { palette } from "./palette";
 import { shadows } from "./shadows";

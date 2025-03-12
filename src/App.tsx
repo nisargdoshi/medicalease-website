@@ -2,8 +2,8 @@ import { CssBaseline, GlobalStyles } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
 import { theme } from "./theme";
-import { createRouter, RouterProvider } from "@tanstack/react-router";
-import { FunctionComponent } from "./types/common";
+import { type createRouter, RouterProvider } from "@tanstack/react-router";
+import type { FunctionComponent } from "./types/common";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -20,11 +20,13 @@ const ReactQueryDevtoolsProduction = lazy(() =>
 );
 
 const App = ({ router }: AppProps): FunctionComponent => {
-  const [showDevtools, setShowDevtools] = useState(false);
+  const [showDevtools, setShowDevtools] = useState<boolean>(false);
 
   useEffect(() => {
     // @ts-expect-error window does not contain toggleDevtools
-    window.toggleDevtools = () => setShowDevtools((old) => !old);
+    window.toggleDevtools = (): void => {
+      setShowDevtools((old) => !old);
+    };
   }, []);
 
   return (

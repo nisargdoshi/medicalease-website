@@ -1,4 +1,5 @@
-import { Theme } from "@mui/material/styles";
+import type { Theme } from "@mui/material/styles";
+import type { CSSProperties } from "@mui/material/styles/createMixins";
 
 export const typography = {
   htmlFontSize: 16,
@@ -46,7 +47,7 @@ export const typographyOverride = {
     variants: [
       {
         props: { variant: "link" },
-        style: ({ theme }: { theme: Theme }) => ({
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
           fontSize: 14,
           fontWeight: 600,
           cursor: "pointer",

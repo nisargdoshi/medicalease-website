@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { type JSX, useState } from "react";
 
 import {
   Box,
@@ -18,8 +18,8 @@ import logo from "@assets/logo.svg";
 import dashboard from "@assets/dashboard.png";
 import authRings from "@assets/auth-rings.png";
 
-export const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+export const Login: React.FC = (): JSX.Element => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <Box
@@ -112,7 +112,9 @@ export const Login = () => {
                           sx={{
                             cursor: "pointer",
                           }}
-                          onClick={() => setShowPassword(!showPassword)}
+                          onClick={() => {
+                            setShowPassword(!showPassword);
+                          }}
                         >
                           {showPassword ? (
                             <Eye size={24} />
@@ -126,12 +128,14 @@ export const Login = () => {
                 />
               </Box>
               <Box
-                sx={{
-                  mt: 2,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
+                sx={
+                  {
+                    mt: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  } as const
+                }
               >
                 <FormControlLabel control={<Switch />} label="Remember Me" />
 

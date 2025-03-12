@@ -1,4 +1,4 @@
-import { CSSObject } from "@emotion/react";
+import type { CSSObject } from "@emotion/react";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -115,7 +115,7 @@ declare module "@mui/material/Select" {
 declare module "@mui/material/IconButton" {
   interface IconButtonOwnProps {
     variant?: "tertiary" | "soft";
-    type?: "rounded" | string;
+    type?: string;
   }
 }
 

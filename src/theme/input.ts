@@ -1,9 +1,11 @@
-import { Theme } from "@mui/material/styles";
+import type { Theme } from "@mui/material/styles";
+import type { CSSProperties } from "@mui/material/styles/createMixins";
+
 
 export const label = {
   MuiInputLabel: {
     styleOverrides: {
-      root: ({ theme }: { theme: Theme }) => ({
+      root: ({ theme }: { theme: Theme }): CSSProperties => ({
         fontSize: 14,
         fontWeight: 500,
         lineHeight: "20px",
@@ -17,7 +19,7 @@ export const label = {
 export const input = {
   MuiInputBase: {
     styleOverrides: {
-      root: ({ theme }: { theme: Theme }) => ({
+      root: ({ theme }: { theme: Theme }): CSSProperties => ({
         borderRadius: "6px !important",
 
         "& .MuiInputBase-input": {

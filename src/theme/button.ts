@@ -1,4 +1,5 @@
-import { Theme } from "@mui/material/styles";
+import type { Theme } from "@mui/material/styles";
+import type { CSSProperties } from "@mui/material/styles/createMixins";
 
 export const button = {
   MuiButton: {
@@ -6,7 +7,7 @@ export const button = {
       disableRipple: true,
     },
     styleOverrides: {
-      root: () => ({
+      root: (): CSSProperties => ({
         boxShadow: "none !important",
         textTransform: "capitalize",
         "&:focus": {
@@ -23,7 +24,7 @@ export const button = {
       sizeSmall: {
         borderRadius: "6px",
       },
-      containedPrimary: ({ theme }: { theme: Theme }) => ({
+      containedPrimary: ({ theme }: { theme: Theme }): CSSProperties => ({
         "&:focus": {
           background: theme.palette.primary.focus,
         },
@@ -32,7 +33,7 @@ export const button = {
           color: theme.palette.primary.disabledColor,
         },
       }),
-      containedSecondary: ({ theme }: { theme: Theme }) => ({
+      containedSecondary: ({ theme }: { theme: Theme }): CSSProperties => ({
         "&:focus": {
           background: theme.palette.secondary.focus,
         },
@@ -45,7 +46,7 @@ export const button = {
     variants: [
       {
         props: { variant: "tertiary" },
-        style: ({ theme }: { theme: Theme }) => ({
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
           minWidth: 64,
           fontSize: 14,
           fontWeight: 500,
@@ -72,7 +73,7 @@ export const button = {
       },
       {
         props: { variant: "soft" },
-        style: ({ theme }: { theme: Theme }) => ({
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
           minWidth: 64,
           fontSize: 14,
           fontWeight: 500,

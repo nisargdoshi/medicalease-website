@@ -4,9 +4,10 @@ import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { theme } from "../theme";
 
 import "../index.css";
+import type React from "react";
 
 export const Route = createRootRoute({
-  component: () => (
+  component: ():React.FC => (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
