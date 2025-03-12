@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 import {
   Box,
@@ -14,22 +14,22 @@ import {
   MenuItem,
   Chip,
   type SelectChangeEvent,
-} from "@mui/material";
+} from '@mui/material';
 
-import { X, UserCircle, Eye, PencilSimple } from "@phosphor-icons/react";
-import type { ReactNode } from "@tanstack/react-router";
+import { X, UserCircle, Eye, PencilSimple } from '@phosphor-icons/react';
+import type { ReactNode } from '@tanstack/react-router';
 
 const names = [
-  "Oliver",
-  "Van",
-  "April",
-  "Ralph",
-  "Omar",
-  "Carlos",
-  "Miriam",
-  "Bradley",
-  "Virginia",
-  "Kelly",
+  'Oliver',
+  'Van',
+  'April',
+  'Ralph',
+  'Omar',
+  'Carlos',
+  'Miriam',
+  'Bradley',
+  'Virginia',
+  'Kelly',
 ];
 
 export const Home = (): React.FC => {
@@ -39,7 +39,7 @@ export const Home = (): React.FC => {
     const {
       target: { value },
     } = event;
-    const values = typeof value === "string" ? value.split(",") : value;
+    const values = typeof value === 'string' ? value.split(',') : value;
     setSelectedNames(values);
   };
 
@@ -305,7 +305,7 @@ export const Home = (): React.FC => {
             onChange={handleChange}
             IconComponent="span"
             renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {selected.map((value: string) => (
                   <Chip
                     key={value}
@@ -337,13 +337,13 @@ export const Home = (): React.FC => {
             onChange={handleChange}
             IconComponent="span"
             renderValue={(selected: Array<string>): ReactNode => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {selected.map(
                   (value: string): ReactNode => (
                     <Chip
                       key={value}
                       label={value}
-                      deleteIcon={ <X size={12} /> as ReactNode}
+                      deleteIcon={(<X size={12} />) as ReactNode}
                       onDelete={() => {
                         console.log(value);
                       }}
@@ -371,9 +371,9 @@ export const Home = (): React.FC => {
             value={selectedNames}
             onChange={handleChange}
             IconComponent="span"
-            renderValue={(selected:Array<string>): ReactNode => (
+            renderValue={(selected: Array<string>): ReactNode => (
               <Box
-                sx={{ mt: -0.35, display: "flex", flexWrap: "wrap", gap: 1 }}
+                sx={{ mt: -0.35, display: 'flex', flexWrap: 'wrap', gap: 1 }}
               >
                 {selected.map(
                   (value: string): ReactNode => (

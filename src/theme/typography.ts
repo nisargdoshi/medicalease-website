@@ -1,9 +1,9 @@
-import type { Theme } from "@mui/material/styles";
-import type { CSSProperties } from "@mui/material/styles/createMixins";
+import type { Theme } from '@mui/material/styles';
+import type { CSSProperties } from '@mui/material/styles/createMixins';
 
 export const typography = {
   htmlFontSize: 16,
-  fontFamily: "Inter, sans-serif",
+  fontFamily: 'Inter, sans-serif',
   h1: {
     fontSize: 32,
     fontWeight: 600,
@@ -46,13 +46,13 @@ export const typographyOverride = {
   MuiTypography: {
     variants: [
       {
-        props: { variant: "link" },
+        props: { variant: 'link' },
         style: ({ theme }: { theme: Theme }): CSSProperties => ({
           fontSize: 14,
           fontWeight: 600,
-          cursor: "pointer",
-          lineHeight: "20px",
-          textDecoration: "underline",
+          cursor: 'pointer',
+          lineHeight: '20px',
+          textDecoration: 'underline',
           color: theme.palette.text.primary,
         }),
       },
