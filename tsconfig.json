@@ -7,6 +7,13 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM"], // Includes DOM types for JSX elements
+    "skipLibCheck": true,
 
     //linting
     "strict": true,
@@ -18,5 +25,5 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src"]
+  "include": ["src","vite.config.ts"]
 }
