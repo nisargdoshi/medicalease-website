@@ -1,6 +1,7 @@
 import { fixupPluginRules } from '@eslint/compat';
 import eslintJS from "@eslint/js"
 import tsParser from '@typescript-eslint/parser';
+//import eslintPluginStorybook from "eslint-plugin-storybook" // does not support eslint v9
 import eslintConfigPrettier from "eslint-config-prettier"
 import eslintPluginImport from 'eslint-plugin-import'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
@@ -47,7 +48,6 @@ const typescriptConfig = {
       ecmaFeatures: { modules: true },
       ecmaVersion: "latest",
       project: "./tsconfig.json",
-      tsconfigRootDir: process.cwd(),
     },
     globals: {
       ...globals.builtin,
@@ -108,7 +108,9 @@ const reactConfig = {
   },
   rules: {
     "@typescript-eslint/no-unsafe-assignment": "off",
-     "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "import/no-anonymous-default-export": "error",
     "react/jsx-boolean-value": "error",
     "react/jsx-filename-extension": [
