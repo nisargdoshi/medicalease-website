@@ -12,6 +12,10 @@ on:
       - dev
       - stage
       
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -71,6 +75,10 @@ jobs:
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation --distribution-id E3ENAC2B9TWJE9 --paths "/*"
+      
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+
 
       - name: Post PR comment with S3 URL
         if: github.event_name == 'pull_request'
