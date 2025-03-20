@@ -1,7 +1,7 @@
 name: Vite CI/CD for React with Yarn
 
 on:
-  push:
+  pull_request:
     branches:
       - main
       - dev
