@@ -44,21 +44,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    # Dynamically assign the environment
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'prod' ||github.ref == 'refs/heads/stage' && 'stage' || 'dev' }}
     # environment: dev
     steps:
-      - name: Determine Environment
-        id: env
-        run: |
-          if [[ "${GITHUB_REF##*/}" == "dev" ]]; then
-           echo "env_name=dev" >> $GITHUB_ENV
-           echo "bucket_name=${{ secrets.DEV_S3_BUCKET_NAME }}" >> $GITHUB_ENV
-          elif [[ "${GITHUB_REF##*/}" == "stage" ]]; then
-           echo "env_name=stage" >> $GITHUB_ENV
-           echo "bucket_name=${{ secrets.STAGE_S3_BUCKET_NAME }}" >> $GITHUB_ENV
-          else
-           echo "env_name=production" >> $GITHUB_ENV
-           echo "bucket_name=${{ secrets.PROD_S3_BUCKET_NAME }}" >> $GITHUB_ENV
-
       - name: Print environment
         run: |
           echo "Environment: ${{ env.env_name }} "
