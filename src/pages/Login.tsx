@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 import {
   Box,
@@ -9,31 +9,31 @@ import {
   Switch,
   TextField,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
-import { EnvelopeSimple, Lock, Eye, EyeSlash } from "@phosphor-icons/react";
+import { EnvelopeSimple, Lock, Eye, EyeSlash } from '@phosphor-icons/react';
 
-export const Login = () => {
+export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <>
       <Box
         sx={{
-          maxWidth: { xs: "60%", lg: 400 },
-          mx: { xs: "auto", lg: "unset" },
-          textAlign: "center",
+          maxWidth: { xs: '60%', lg: 400 },
+          mx: { xs: 'auto', lg: 'unset' },
+          textAlign: 'center',
         }}
       >
         <Typography variant="h2">Welcome Back!</Typography>
-        <Typography sx={{ mt: 1.25, color: "text.secondary" }}>
+        <Typography sx={{ mt: 1.25, color: 'text.secondary' }}>
           Your email & password to access your account.
         </Typography>
       </Box>
       <Box
         sx={{
-          maxWidth: { xs: "60%", lg: 400 },
-          mx: { xs: "auto", lg: "unset" },
+          maxWidth: { xs: '60%', lg: 400 },
+          mx: { xs: 'auto', lg: 'unset' },
         }}
       >
         <Box>
@@ -45,8 +45,8 @@ export const Login = () => {
             type="email"
             placeholder="Enter your email"
             sx={{
-              "& .MuiInputBase-root": {
-                bgcolor: "common.white",
+              '& .MuiInputBase-root': {
+                bgcolor: 'common.white',
               },
             }}
             slotProps={{
@@ -66,11 +66,11 @@ export const Login = () => {
             fullWidth
             id="password"
             size="large"
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
             placeholder="Enter your email"
             sx={{
-              "& .MuiInputBase-root": {
-                bgcolor: "common.white",
+              '& .MuiInputBase-root': {
+                bgcolor: 'common.white',
               },
             }}
             slotProps={{
@@ -84,7 +84,7 @@ export const Login = () => {
                   <InputAdornment
                     position="end"
                     sx={{
-                      cursor: "pointer",
+                      cursor: 'pointer',
                     }}
                     onClick={() => setShowPassword(!showPassword)}
                   >
@@ -98,9 +98,9 @@ export const Login = () => {
         <Box
           sx={{
             mt: 2,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
           <FormControlLabel control={<Switch />} label="Remember Me" />
@@ -112,18 +112,18 @@ export const Login = () => {
             Log in
           </Button>
         </Box>
-        <Box sx={{ mt: 5, textAlign: "center" }}>
+        <Box sx={{ mt: 5, textAlign: 'center' }}>
           <Typography
             sx={{
               color: (theme) => theme.palette.neutral[600],
             }}
           >
-            Don't have an account?{" "}
+            Don't have an account?{' '}
             <Typography
               component="span"
               variant="link"
               sx={{
-                color: "info.dark",
+                color: 'info.dark',
               }}
             >
               Sign Up
@@ -133,17 +133,17 @@ export const Login = () => {
       </Box>
       <Box
         sx={{
-          maxWidth: { xs: "60%", lg: 400 },
-          mx: { xs: "auto", lg: "unset" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          maxWidth: { xs: '60%', lg: 400 },
+          mx: { xs: 'auto', lg: 'unset' },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
       >
         <Typography variant="body2">Version 1.0</Typography>
         <Box>
           <Typography component="span" variant="body2">
-            Terms of Use |{" "}
+            Terms of Use |{' '}
           </Typography>
           <Typography component="span" variant="body2">
             Privacy Policy

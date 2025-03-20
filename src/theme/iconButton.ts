@@ -1,4 +1,5 @@
-import { Theme } from "@mui/material";
+import type { Theme } from '@mui/material';
+import type { CSSProperties } from '@mui/material/styles/createMixins';
 
 export const iconButton = {
   MuiIconButton: {
@@ -6,63 +7,63 @@ export const iconButton = {
       disableRipple: true,
     },
     styleOverrides: {
-      root: ({ theme }: { theme: Theme }) => ({
-        boxShadow: "none",
+      root: ({ theme }: { theme: Theme }): CSSProperties => ({
+        boxShadow: 'none',
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-        "&:hover": {
+        '&:hover': {
           backgroundColor: theme.palette.primary.dark,
         },
-        "&:focus": {
+        '&:focus': {
           outline: 0,
           backgroundColor: theme.palette.primary.focus,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           backgroundColor: theme.palette.primary.disabled,
           color: theme.palette.primary.disabledColor,
         },
         '&[type="rounded"]': {
-          borderRadius: "50%",
+          borderRadius: '50%',
         },
       }),
       sizeMedium: {
         fontSize: 22,
-        borderRadius: "6px",
+        borderRadius: '6px',
       },
       sizeLarge: {
-        padding: "10px",
-        borderRadius: "8px",
+        padding: '10px',
+        borderRadius: '8px',
       },
       sizeSmall: {
-        borderRadius: "6px",
-        padding: "8px",
+        borderRadius: '6px',
+        padding: '8px',
       },
-      colorPrimary: ({ theme }: { theme: Theme }) => ({
+      colorPrimary: ({ theme }: { theme: Theme }): CSSProperties => ({
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
-        "&:hover": {
+        '&:hover': {
           backgroundColor: theme.palette.primary.dark,
         },
-        "&:focus": {
+        '&:focus': {
           outline: 0,
           backgroundColor: theme.palette.primary.focus,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           backgroundColor: theme.palette.primary.disabled,
           color: theme.palette.primary.disabledColor,
         },
       }),
-      colorSecondary: ({ theme }: { theme: Theme }) => ({
+      colorSecondary: ({ theme }: { theme: Theme }): CSSProperties => ({
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText,
-        "&:hover": {
+        '&:hover': {
           backgroundColor: theme.palette.secondary.dark,
         },
-        "&:focus": {
+        '&:focus': {
           outline: 0,
           backgroundColor: theme.palette.secondary.focus,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           backgroundColor: theme.palette.secondary.disabled,
           color: theme.palette.secondary.disabledColor,
         },
@@ -70,39 +71,39 @@ export const iconButton = {
     },
     variants: [
       {
-        props: { variant: "tertiary" },
-        style: ({ theme }: { theme: Theme }) => ({
-          backgroundColor: "transparent",
+        props: { variant: 'tertiary' },
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
+          backgroundColor: 'transparent',
           color: theme.palette.text.primary,
           border: `1px solid ${theme.palette.neutral[300]}`,
-          "&:hover": {
+          '&:hover': {
             borderColor: theme.palette.neutral[100],
             backgroundColor: theme.palette.neutral[100],
           },
-          "&:focus": {
+          '&:focus': {
             background: theme.palette.neutral[100],
           },
-          "&.Mui-disabled": {
-            backgroundColor: "transparent",
+          '&.Mui-disabled': {
+            backgroundColor: 'transparent',
             color: theme.palette.neutral[300],
             borderColor: theme.palette.neutral[300],
           },
         }),
       },
       {
-        props: { variant: "soft" },
-        style: ({ theme }: { theme: Theme }) => ({
-          backgroundColor: "transparent",
+        props: { variant: 'soft' },
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
+          backgroundColor: 'transparent',
           color: theme.palette.text.primary,
-          "&:hover": {
+          '&:hover': {
             color: theme.palette.text.primary,
             backgroundColor: theme.palette.neutral[100],
           },
-          "&:focus": {
+          '&:focus': {
             backgroundColor: theme.palette.neutral[100],
           },
-          "&.Mui-disabled": {
-            backgroundColor: "transparent",
+          '&.Mui-disabled': {
+            backgroundColor: 'transparent',
             color: theme.palette.neutral[300],
           },
         }),

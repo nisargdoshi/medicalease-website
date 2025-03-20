@@ -1,6 +1,6 @@
-import { CSSObject } from "@emotion/react";
+import type { CSSObject } from '@emotion/react';
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Palette {
     neutral: {
       50: string;
@@ -74,52 +74,52 @@ declare module "@mui/material/styles" {
   interface ComponentsOverrides {
     MuiButton: {
       variants: Array<{
-        props: { variant: "tertiary" | "soft" };
+        props: { variant: 'tertiary' | 'soft' };
         style: CSSObject;
       }>;
     };
     MuiIconButton: {
       variants: Array<{
-        props: { variant: "tertiary" | "soft" };
+        props: { variant: 'tertiary' | 'soft' };
         style: CSSObject;
       }>;
     };
   }
 }
 
-declare module "@mui/material/Button" {
+declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     tertiary: true;
     soft: true;
   }
 }
 
-declare module "@mui/material/TextField" {
+declare module '@mui/material/TextField' {
   interface TextFieldPropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/InputBase" {
+declare module '@mui/material/InputBase' {
   interface InputBasePropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/Select" {
+declare module '@mui/material/Select' {
   interface SelectPropsSizeOverrides {
     large: true;
   }
 }
 
-declare module "@mui/material/IconButton" {
+declare module '@mui/material/IconButton' {
   interface IconButtonOwnProps {
-    variant?: "tertiary" | "soft";
-    type?: "rounded" | string;
+    variant?: 'tertiary' | 'soft';
+    type?: string;
   }
 }
 
-declare module "@mui/material/Typography" {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     link: true;
   }

@@ -1,30 +1,32 @@
-import { CssBaseline, GlobalStyles } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline, GlobalStyles } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 
-import { theme } from "./theme";
-import { createRouter, RouterProvider } from "@tanstack/react-router";
-import { FunctionComponent } from "./types/common";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { theme } from './theme';
+import { type createRouter, RouterProvider } from '@tanstack/react-router';
+import type { FunctionComponent } from './types/common';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 const queryClient = new QueryClient();
 
 type AppProps = { router: ReturnType<typeof createRouter> };
 
 const ReactQueryDevtoolsProduction = lazy(() =>
-  import("@tanstack/react-query-devtools/production").then((d) => ({
+  import('@tanstack/react-query-devtools/production').then((d) => ({
     default: d.ReactQueryDevtools,
   }))
 );
 
 const App = ({ router }: AppProps): FunctionComponent => {
-  const [showDevtools, setShowDevtools] = useState(false);
+  const [showDevtools, setShowDevtools] = useState<boolean>(false);
 
   useEffect(() => {
     // @ts-expect-error window does not contain toggleDevtools
-    window.toggleDevtools = () => setShowDevtools((old) => !old);
+    window.toggleDevtools = (): void => {
+      setShowDevtools((old) => !old);
+    };
   }, []);
 
   return (

@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to deploy a preview environment for PR.
+
+Parameters:
+  PRNumber:
+    Type: String
+    Description: The PR number used to uniquely identify the stack.
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub preview-pr-${PRNumber}-bucket
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c55b159cbfafe1f0 # Amazon Linux 2 AMI
+      KeyName: your-key-name
+      Tags:
+        - Key: Name
+          Value: !Sub preview-pr-${PRNumber}-instance
+
+Outputs:
+  BucketName:
+    Description: The name of the S3 bucket created for the PR preview environment.
+    Value: !Ref S3Bucket
+
+  InstanceID:
+    Description: The ID of the EC2 instance created.
+    Value: !Ref EC2Instance

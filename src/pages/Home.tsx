@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 import {
   Box,
@@ -11,34 +11,35 @@ import {
   TextField,
   Typography,
   Select,
-  SelectChangeEvent,
   MenuItem,
   Chip,
-} from "@mui/material";
+  type SelectChangeEvent,
+} from '@mui/material';
 
-import { X, UserCircle, Eye, PencilSimple } from "@phosphor-icons/react";
+import { X, UserCircle, Eye, PencilSimple } from '@phosphor-icons/react';
+import type { ReactNode } from '@tanstack/react-router';
 
 const names = [
-  "Oliver",
-  "Van",
-  "April",
-  "Ralph",
-  "Omar",
-  "Carlos",
-  "Miriam",
-  "Bradley",
-  "Virginia",
-  "Kelly",
+  'Oliver',
+  'Van',
+  'April',
+  'Ralph',
+  'Omar',
+  'Carlos',
+  'Miriam',
+  'Bradley',
+  'Virginia',
+  'Kelly',
 ];
 
-export const Home = () => {
-  const [selectedNames, setSelectedNames] = useState<string[]>([]);
+export const Home = (): React.FC => {
+  const [selectedNames, setSelectedNames] = useState<Array<string>>([]);
 
-  const handleChange = (event: SelectChangeEvent<string[]>) => {
+  const handleChange = (event: SelectChangeEvent<Array<string>>): void => {
     const {
       target: { value },
     } = event;
-    const values = typeof value === "string" ? value.split(",") : value;
+    const values = typeof value === 'string' ? value.split(',') : value;
     setSelectedNames(values);
   };
 
@@ -304,23 +305,27 @@ export const Home = () => {
             onChange={handleChange}
             IconComponent="span"
             renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {selected.map((value) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {selected.map((value: string) => (
                   <Chip
                     key={value}
                     label={value}
                     deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
+                    onDelete={() => {
+                      console.log(value);
+                    }}
                   />
                 ))}
               </Box>
             )}
           >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
+            {names.map(
+              (name: string): ReactNode => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              )
+            )}
           </Select>
         </Box>
         <Box sx={{ my: 1.5 }}>
@@ -331,24 +336,30 @@ export const Home = () => {
             value={selectedNames}
             onChange={handleChange}
             IconComponent="span"
-            renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                    deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
-                  />
-                ))}
+            renderValue={(selected: Array<string>): ReactNode => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {selected.map(
+                  (value: string): ReactNode => (
+                    <Chip
+                      key={value}
+                      label={value}
+                      deleteIcon={(<X size={12} />) as ReactNode}
+                      onDelete={() => {
+                        console.log(value);
+                      }}
+                    />
+                  )
+                )}
               </Box>
             )}
           >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
+            {names.map(
+              (name: string): ReactNode => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              )
+            )}
           </Select>
         </Box>
         <Box sx={{ my: 1.5 }}>
@@ -360,26 +371,32 @@ export const Home = () => {
             value={selectedNames}
             onChange={handleChange}
             IconComponent="span"
-            renderValue={(selected) => (
+            renderValue={(selected: Array<string>): ReactNode => (
               <Box
-                sx={{ mt: -0.35, display: "flex", flexWrap: "wrap", gap: 1 }}
+                sx={{ mt: -0.35, display: 'flex', flexWrap: 'wrap', gap: 1 }}
               >
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                    deleteIcon={<X size={12} />}
-                    onDelete={() => console.log(value)}
-                  />
-                ))}
+                {selected.map(
+                  (value: string): ReactNode => (
+                    <Chip
+                      key={value}
+                      label={value}
+                      deleteIcon={<X size={12} />}
+                      onDelete={() => {
+                        console.log(value);
+                      }}
+                    />
+                  )
+                )}
               </Box>
             )}
           >
-            {names.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
+            {names.map(
+              (name: string): ReactNode => (
+                <MenuItem key={name} value={name}>
+                  {name}
+                </MenuItem>
+              )
+            )}
           </Select>
         </Box>
         <Box sx={{ my: 1.5 }}>

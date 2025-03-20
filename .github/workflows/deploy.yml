@@ -1,0 +1,92 @@
+name: Vite CI/CD for React with Yarn
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+      - stage
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Yarn
+        run: corepack prepare yarn@4.4.0 --activate
+
+      - name: Install dependencies with Yarn
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        run: yarn build
+
+      - name: Upload build as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    # Dynamically assign the environment
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'prod' ||github.ref == 'refs/heads/stage' && 'stage' || 'dev' }}
+    # environment: dev
+    steps:
+      - name: Print environment
+        run: |
+          echo "Environment: ${{ env.env_name }} "
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: dist
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{vars.S3_BUCKET_REGION}}
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync dist/ s3://${{vars.S3_BUCKET_NAME}} --delete
+        env:
+          AWS_DEFAULT_REGION: ${{vars.S3_BUCKET_REGION}}
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{vars.CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+
+      - name: Post PR comment with S3 URL
+        if: github.event_name == 'pull_request'
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COMMENT="🚀 Deployed to S3: [Your App URL](https://your-s3-bucket-name.s3.amazonaws.com)"
+          gh pr comment $PR_NUMBER --body "$COMMENT"

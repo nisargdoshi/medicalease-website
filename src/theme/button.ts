@@ -1,4 +1,5 @@
-import { Theme } from "@mui/material/styles";
+import type { Theme } from '@mui/material/styles';
+import type { CSSProperties } from '@mui/material/styles/createMixins';
 
 export const button = {
   MuiButton: {
@@ -6,37 +7,37 @@ export const button = {
       disableRipple: true,
     },
     styleOverrides: {
-      root: () => ({
-        boxShadow: "none !important",
-        textTransform: "capitalize",
-        "&:focus": {
+      root: (): CSSProperties => ({
+        boxShadow: 'none !important',
+        textTransform: 'capitalize',
+        '&:focus': {
           outline: 0,
         },
       }),
       sizeMedium: {
-        borderRadius: "6px",
+        borderRadius: '6px',
       },
       sizeLarge: {
-        paddingTop: "11px",
-        paddingBottom: "11px",
+        paddingTop: '11px',
+        paddingBottom: '11px',
       },
       sizeSmall: {
-        borderRadius: "6px",
+        borderRadius: '6px',
       },
-      containedPrimary: ({ theme }: { theme: Theme }) => ({
-        "&:focus": {
+      containedPrimary: ({ theme }: { theme: Theme }): CSSProperties => ({
+        '&:focus': {
           background: theme.palette.primary.focus,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           background: theme.palette.primary.disabled,
           color: theme.palette.primary.disabledColor,
         },
       }),
-      containedSecondary: ({ theme }: { theme: Theme }) => ({
-        "&:focus": {
+      containedSecondary: ({ theme }: { theme: Theme }): CSSProperties => ({
+        '&:focus': {
           background: theme.palette.secondary.focus,
         },
-        "&.Mui-disabled": {
+        '&.Mui-disabled': {
           background: theme.palette.secondary.disabled,
           color: theme.palette.secondary.disabledColor,
         },
@@ -44,57 +45,57 @@ export const button = {
     },
     variants: [
       {
-        props: { variant: "tertiary" },
-        style: ({ theme }: { theme: Theme }) => ({
+        props: { variant: 'tertiary' },
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
           minWidth: 64,
           fontSize: 14,
           fontWeight: 500,
           lineHeight: 1.75,
-          borderRadius: "6px",
-          padding: "4px 10px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
+          borderRadius: '6px',
+          padding: '4px 10px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           color: theme.palette.text.primary,
           border: `1px solid ${theme.palette.neutral[300]}`,
-          "&:hover": {
+          '&:hover': {
             borderColor: theme.palette.neutral[50],
             background: theme.palette.neutral[50],
           },
-          "&:focus": {
+          '&:focus': {
             background: theme.palette.neutral[50],
           },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             color: theme.palette.neutral[300],
             borderColor: theme.palette.neutral[300],
           },
         }),
       },
       {
-        props: { variant: "soft" },
-        style: ({ theme }: { theme: Theme }) => ({
+        props: { variant: 'soft' },
+        style: ({ theme }: { theme: Theme }): CSSProperties => ({
           minWidth: 64,
           fontSize: 14,
           fontWeight: 500,
           lineHeight: 1.75,
-          borderRadius: "6px",
-          padding: "4px 10px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
+          borderRadius: '6px',
+          padding: '4px 10px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           borderColor: theme.palette.neutral[50],
           background: theme.palette.neutral[50],
-          "&:hover": {
+          '&:hover': {
             color: theme.palette.text.primary,
             border: `1px solid ${theme.palette.neutral[300]}`,
           },
-          "&:focus": {
+          '&:focus': {
             borderColor: theme.palette.neutral[50],
             background: theme.palette.neutral[50],
           },
-          "&.Mui-disabled": {
+          '&.Mui-disabled': {
             color: theme.palette.neutral[300],
-            borderColor: "none",
+            borderColor: 'none',
           },
         }),
       },
